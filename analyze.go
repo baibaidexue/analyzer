@@ -76,7 +76,7 @@ func CrackImage(img image.Image, topN int) (Colors []uint32) {
 
 		similar = false
 		for _, had := range selectedColors {
-			if isSimilarColor(
+			if IsSimilarColor(
 				color.RGBA{R: uint8(curColor.R), G: uint8(curColor.G), B: uint8(curColor.B)},
 				color.RGBA{R: uint8(had.R), G: uint8(had.G), B: uint8(had.B)},
 				60) {
@@ -99,7 +99,7 @@ func CrackImage(img image.Image, topN int) (Colors []uint32) {
 	return
 }
 
-func isSimilarColor(c1, c2 color.RGBA, threshold float64) bool {
+func IsSimilarColor(c1, c2 color.RGBA, threshold float64) bool {
 	rDiff := math.Abs(float64(c1.R) - float64(c2.R))
 	gDiff := math.Abs(float64(c1.G) - float64(c2.G))
 	bDiff := math.Abs(float64(c1.B) - float64(c2.B))
